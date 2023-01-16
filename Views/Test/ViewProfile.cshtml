@@ -1,0 +1,34 @@
+﻿
+@model CodingBuddy.ViewModels.PracticeUserBookViewModel
+
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*If more than 2 books, then the user's h2 tag will have a CSS class called bigReader' *@
+@{
+    var className = Model.Books.Count > 2 ? "bigReader" : null;
+}
+
+@*The at-symbol lets us access the object passed into the View() returned by the Controller*@
+<h2 class="@className">ID: @Model.TestUser.Id, Name: @Model.TestUser.Name</h2>
+
+@*A Razor if-else statement*@
+@if (Model.Books.Count == 0)
+    <a href="~/Views/Test/ViewProfile.cshtml">~/Views/Test/ViewProfile.cshtml</a>
+{
+<text>No books on loan.</text>
+}
+else
+{
+<h3>Books Taken</h3>
+<ul>
+    @*A Razor foreach section*@
+    @foreach (var book in Model.Books)
+    {
+        <li>@book.Title by @book.Author</li>
+    }
+</ul>
+}
+

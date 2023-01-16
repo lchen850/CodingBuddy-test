@@ -1,0 +1,70 @@
+﻿<!--Attribution: coded with the help of this video - https://www.youtube.com/watch?v=mh36Kts-wX8-->
+
+@using Microsoft.AspNet.Identity
+
+<nav id="my-nav" class="navbar">
+    <div class="logo">
+        <a href="@Url.Action("Index", "Home")">
+            <img id="logo" src="~/Content/Assets/logo.svg" alt="CodingBuddy C-shaped logo in blue and purple" />
+        </a>
+    </div>
+    <div id="logo-text" class="logo-text"><a>@Html.ActionLink("CODINGBUDDY", "Index", "Home")</a></div>
+    <ul id="navbar-list" class="nav-list">
+        <li class="list-item">
+            <a>@Html.ActionLink("Home", "Index", "Home")</a>
+        </li>
+        <li class="list-item">
+            <a>@Html.ActionLink("About", "About", "Home")</a>
+        </li>
+        <li class="list-item">
+            <a>@Html.ActionLink("Contact", "Contact", "Home")</a>
+        </li>
+    </ul>
+
+    <ul id="login-list" class="login-signup-list">
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <li class="list-item">
+                    <button>
+                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </button>
+
+                </li>
+                <li class="list-item">
+                    <button>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            Log off
+                        </a>
+                    </button>
+                </li>
+
+            }
+        }
+        else
+        {
+
+            <li class="list-item">
+                <button id="login-button">
+                    <a>
+                        @Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                    </a>
+                </button>
+            </li>
+            <li class="list-item">
+                <button id="signup-button">
+                    <a> @Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </a>
+                </button>
+            </li>
+
+        }
+    </ul>
+    <div id="toggle-button" class="menu">
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+    </div>
+</nav>

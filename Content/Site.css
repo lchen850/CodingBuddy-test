@@ -1,0 +1,400 @@
+﻿﻿
+/* Font Settings */
+html {
+    font-size: 16px;
+}
+
+@font-face {
+    font-family: "Anton";
+    src: url("MyFonts/Anton/Anton-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Gordita";
+    src: url("'MyFonts/Gordita/Gordita Regular.otf'");
+}
+
+@media all and (max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/************************End of General Font Settings**********************/
+
+
+/* General Page Settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("Assets/background.png");
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: scroll;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/** Colour palette variables */
+:root {
+    --peachyYellow: #FFBD59;
+    --periwinkle: #856BC2;
+    --palePurple: #DED6E6;
+    --mediumBlue: #1627A3;
+}
+
+/*****************************End of General Settings*********************************/
+
+/* Top Navigation Bar Settings */
+.navbar {
+    background: black;
+    color: white;
+    display: flex; /* Use responsive flexbox design */
+    align-items: center;
+    border-bottom: 2px solid var(--mediumBlue);
+    padding: 20px;
+    z-index: 1; /* Make the navbar in front of rest of page */
+}
+
+
+/* Logo styling */
+/* Sizes of images and font relative to root-size (16px on larger screens, 14px on smaller) of html elem */
+#logo {
+    height: 5.4rem;
+}
+/* Place logo text on left/start of navigation bar */
+.logo-text {
+    justify-self: start;
+}
+
+    .logo-text a {
+        font-family: Anton, Arial, sans-serif;
+        padding: 10px;
+        font-size: 2rem;
+    }
+
+/* Put main navbar items in center of navigation bar */
+.nav-list {
+    list-style-type: none;
+    justify-self: center;
+}
+
+    /* Navbar link colors for different functionalities */
+    .nav-list a:link, .nav-list :visited, .logo-text a:link, .logo-text a:visited {
+        color: white;
+        text-decoration: none;
+    }
+
+    .nav-list a:active, .logo-text a:active {
+        color: var(--peachyYellow) !important;
+        text-decoration: underline;
+    }
+
+    .nav-list a:hover, .logo-text a:hover {
+        color: var(--periwinkle);
+        text-decoration: underline;
+    }
+
+/** Delete bullet points from list in navbar */
+.login-signup-list {
+    list-style-type: none;
+}
+
+/* Main navbar list items in center of navbar */
+.nav-list .list-item {
+    padding: 20px 50px;
+    font-size: 1rem;
+}
+
+.list-item {
+    display: inline-block;
+    font-family: Gordita, Arial, Verdana, sans-serif;
+}
+
+/* List for SignUp/Login options on right-hand side of navbar */
+.login-signup-list {
+    margin-left: auto;
+}
+
+    .login-signup-list .list-item {
+        padding: 20px 20px;
+    }
+/* Styling for login and sign up buttons */
+#signup-button, #login-button {
+    padding: 10px 30px !important;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+#login-button {
+    background-color: var(--mediumBlue);
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+    #login-button a {
+        color: white;
+        text-decoration: none;
+    }
+
+        #login-button a:hover {
+            color: var(--peachyYellow);
+        }
+
+#signup-button {
+    background-color: var(--palePurple);
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+    #signup-button a {
+        color: black;
+        text-decoration: none;
+    }
+
+        #signup-button a:hover {
+            color: var(--mediumBlue);
+        }
+
+        #login-button a:hover, #signup-button a:hover {
+            text-decoration: underline;
+        }
+
+/* Styling for the tribar menu (for mobile screens) */
+.menu { /* Creates a menu button*/
+    display: none;
+    margin: 30px;
+    padding: 20px;
+    border: 4px solid var(--palePurple);
+    border-radius: 8px;
+}
+
+.menu-line { /* 3x line for each stroke in the menu button */
+    width: 42px;
+    height: 3px;
+    background-color: var(--palePurple);
+    margin-bottom: 8px;
+}
+
+/* Navbar Settings for Tablet and Mobile < 1024px Size Screens */
+@media all and (max-width: 1200px) {
+    /* Changes menu to vertical dropdown */
+    .navbar {
+        flex-direction: column;
+    }
+    /* Logo and logo-text must go to left-hand side*/
+    .logo, .logo-text {
+        margin-right: auto;
+        margin-top: 10px;
+    }
+
+    .logo-text {
+        margin-left: -2px;
+    }
+
+    /* Navbar links aligned in the center of the dropdown*/
+    .nav-list {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+
+    .menu {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    .login-signup-list {
+        margin-left: 10px;
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+
+    .list-item {
+        display: block;
+    }
+
+    .list-item {
+        border-top: 1px solid white;
+        padding: 0px;
+    }
+    /* Class toggled in JS code to add this class to show/hide links list when toggle tribar menu button*/
+    .active {
+        display: block;
+    }
+
+    #login-button, #signup-button {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+
+/**********************End of Navigation Bar Settings*****************************/
+
+
+/*Home/Index Page Settings*/
+
+/* Attribution for creating a split screen: https://www.tutorialspoint.com/how-to-create-a-split-screen-50-50-with-css */
+
+.splitscreen {
+    height: 100%;
+    position: fixed;
+    margin-top: -50px;
+}
+
+/* Black left-hand side of Home screen */
+.left {
+    min-height: 100%;
+    left: 0;
+    width: 40%;
+    background-color: black;
+    color: white;
+    border-right: 2px solid var(--mediumBlue);
+    z-index: -1;
+}
+
+
+    .left .splitscreen-textbox {
+        position: relative; /* Make the splitscreen divs position relative to the whole page */
+        text-align: center;
+        top: 5%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; /* Evenly space the elements in the app welcome section*/
+    }
+
+/* Welcome to CodingBuddy heading styling */
+#welcome-heading {
+    font-family: Anton, Arial, sans-serif;
+    font-size: 2.2rem;
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Bullet points describing function and purpose of app on left-hand side of Home/Index Page */
+#app-description {
+    padding: 20px;
+    font-family: Gordita, Arial, Verdana, sans-serif;
+    text-align: left;
+    margin-left: 10%;
+    font-size: 0.9rem;
+}
+
+/* List item in the app description*/
+.desc-item {
+    padding: 3vh; /* Distance between bullet point depends on view height */
+}
+
+/* List of available match-filters */
+.filter-types-list {
+    padding: 20px 30px;
+}
+/* Right-hand side "Code, Connect, Create" slogan styling */
+.right {
+    position: fixed;
+    right: 0;
+    width: 60%;
+    z-index: 2; /* Bring to front of footer*/
+}
+
+/* Container for "Code, Connect, Create" graphics/slogan */
+.slogan-container {
+    position: fixed; /* Always on bottom right */
+    width: 50%;
+    bottom: 0;
+    right: -20% !important;
+}
+
+#slogan-graphics {
+    width: 50vw;
+    padding-right: 8vw;
+    float: right;
+}
+
+/* On screens < 1400px, make the proportional size of the Code-Create-Connect slogan larger and adjust right-position */
+@media all and (max-width: 1400px) {
+    .slogan-container {
+        right: -22% !important;
+    }
+
+    #slogan-graphics {
+        width: 70vw;
+    }
+}
+
+/* On screens < 766px get rid of split-screen and make the left-half 100% of the viewport*/
+@media all and (max-width: 766px) {
+    .left {
+        width: 90%;
+        left: 5%;
+        top: 26%;
+        height: fit-content !important;
+        max-height: fit-content;
+        min-height: 0;
+        border: 5px solid var(--mediumBlue);
+    }
+
+    .right {
+        display: none; /* Hide the "Code, Connect, Create" part, as takes up too much space on smaller screens*/
+    }
+
+    #app-description {
+        font-size: 1.4rem;
+    }
+}
+
+/**********************************End of settings for Home/Index Page***********************************/
+/**Settings for Footer*/
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: black;
+    height: auto;
+    width: 100vw; /* Make footer stretch across whole width of the screen */
+    color: white;
+    z-index: 0; /* Ensures that "Code, Connect, Create slogan is in front of footer: flows into footer instead of being broken by blue border  */
+    border-top: 2px solid var(--mediumBlue);
+}
+
+.footer-content {
+    display: flex;
+    align-items: flex-end; /*Items at bottom of footer*/
+    justify-content: flex-start; /*Items on left of footer*/
+    color: white;
+}
+
+#copyright {
+    font-family: Gordita, Arial, Verdana, sans-serif;
+    font-size: 0.8rem;
+    padding: 10px;
+}
+
+
+/**********************************End of settings for Footer***********************************/

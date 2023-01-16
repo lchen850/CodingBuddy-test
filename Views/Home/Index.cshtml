@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "CodingBuddy - Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*Attribution for split-screen layout: https://www.w3schools.com/howto/howto_css_split_screen.asp*@
+<div class="splitscreen left">
+    <div class="splitscreen-textbox">
+        <h1 id="welcome-heading">Welcome to CodingBuddy!</h1>
+
+        <ul id="app-description">
+            <li class="desc-item">
+                Connect with other coders based on your specific interests!
+            </li>
+            <li class="desc-item">
+                CodingBuddy matches you with another BSc student on the course using your Slack ID.
+            </li>
+            <li class="desc-item">
+                Use the following filters to match with a new buddy:
+                <ul class="filter-types-list">
+                    <li>
+                        Programming experience
+                    </li>
+                    <li>
+                        Preferred programming languages
+                    </li> 
+                    <li>
+                        Computer Science interests (e.g. AI, Games Development)
+                    </li>
+                    <li>
+                        Personal hobbies and interests
+                    </li>
+                </ul>
+        </ul>
+    </div>
+</div>
+
+<div class="splitscreen right">
+    <div class="slogan-container">
+        <img id="slogan-graphics" src="~/Content/Assets/codeConnectCreate.svg" alt="White text in black bubble background saying Code, Connect Create." />
+    </div>
+</div>
